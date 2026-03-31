@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <title>Real Estate Price Prediction - Project Blog</title>
+    <meta name="description" content="Detailed project case study for real estate price prediction.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden grid-boxes-bg">
+    <div id="header-container"></div>
+
+    <section class="hero-section min-h-[70vh] flex items-center justify-center pt-24 pb-16 bg-gradient-to-br from-orange-700 via-amber-700 to-red-700 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <p class="text-sm uppercase tracking-wider font-semibold bg-white/20 inline-block px-4 py-2 rounded-full mb-6">Project Blog</p>
+            <h1 class="text-4xl md:text-6xl font-black leading-tight">Real Estate Price Prediction</h1>
+            <p class="mt-6 text-lg md:text-xl text-orange-100 max-w-3xl mx-auto">
+                Delivered an explainable property valuation model using location intelligence and market trend features.
+            </p>
+        </div>
+    </section>
+
+    <main class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <section class="grid md:grid-cols-4 gap-4">
+                <div class="md:col-span-4">
+                    <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-200 text-slate-700 font-semibold mb-4">
+                        <i class="fas fa-layer-group"></i>
+                        Project Snapshot
+                    </div>
+                    <h2 class="text-3xl font-black text-slate-900 mb-2">Project Snapshot</h2>
+                    <p class="text-slate-600 mb-2">Key context and business impact at a glance.</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                    <p class="text-xs text-slate-500 uppercase">Industry</p>
+                    <p class="text-lg font-bold mt-2">Real Estate</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                    <p class="text-xs text-slate-500 uppercase">Duration</p>
+                    <p class="text-lg font-bold mt-2">12 weeks</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                    <p class="text-xs text-slate-500 uppercase">Listings</p>
+                    <p class="text-lg font-bold mt-2">850k properties</p>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                    <p class="text-xs text-slate-500 uppercase">Impact</p>
+                    <p class="text-lg font-bold mt-2">18% lower MAE</p>
+                </div>
+            </section>
+
+            <section class="bg-gradient-to-br from-white to-blue-50 border border-slate-200 rounded-3xl p-8">
+                                <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-fuchsia-100 text-fuchsia-700 font-semibold mb-4">
+                    <i class="fas fa-image"></i>
+                    Visuals
+                </div>
+<h2 class="text-3xl font-black mb-5">Project Visuals</h2>
+                <div class="grid md:grid-cols-2 gap-5">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Residential neighborhood aerial view" class="w-full h-64 object-cover rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1200&q=80" alt="Property valuation dashboard" class="w-full h-64 object-cover rounded-2xl">
+                </div>
+            </section>
+
+            <section class="bg-gradient-to-br from-slate-50 to-indigo-50 border border-slate-200 rounded-3xl p-8">
+                                <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-100 text-orange-700 font-semibold mb-4">
+                    <i class="fas fa-circle-exclamation"></i>
+                    Problem
+                </div>
+<h2 class="text-3xl font-black mb-4">Problem</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Price estimates were inconsistent across regions and failed to capture local market behaviors.
+                    Analysts were spending too much time manually correcting outliers before client delivery.
+                </p>
+            </section>
+
+            <section class="bg-gradient-to-br from-white to-emerald-50 border border-slate-200 rounded-3xl p-8">
+                                <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-100 text-orange-700 font-semibold mb-4">
+                    <i class="fas fa-gears"></i>
+                    Workflow
+                </div>
+<h2 class="text-3xl font-black mb-4">Approach</h2>
+                <ul class="space-y-3 text-slate-700">
+                    <li><i class="fas fa-check-circle text-orange-600 mr-2"></i>Engineered spatial features from neighborhood, transit, school, and amenity signals.</li>
+                    <li><i class="fas fa-check-circle text-orange-600 mr-2"></i>Compared random forest, gradient boosting, and stacked ensembles.</li>
+                    <li><i class="fas fa-check-circle text-orange-600 mr-2"></i>Used geospatial clustering to improve local calibration and reduce outlier drift.</li>
+                    <li><i class="fas fa-check-circle text-orange-600 mr-2"></i>Published valuation API and broker-facing dashboard.</li>
+                </ul>
+            </section>
+
+            <section class="bg-gradient-to-br from-slate-50 to-amber-50 border border-slate-200 rounded-3xl p-8">
+                                <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-100 text-orange-700 font-semibold mb-4">
+                    <i class="fas fa-sitemap"></i>
+                    Architecture
+                </div>
+<h2 class="text-3xl font-black mb-4">Architecture and Workflow</h2>
+                <ol class="space-y-3 text-slate-700 list-decimal pl-6">
+                    <li>Raw listing and transaction data are normalized into canonical schema.</li>
+                    <li>Geospatial joins enrich each property with neighborhood signals.</li>
+                    <li>Ensemble model predicts valuation with confidence intervals.</li>
+                    <li>API powers broker dashboard and batch valuation exports.</li>
+                </ol>
+            </section>
+
+            <section class="bg-gradient-to-br from-white to-rose-50 border border-slate-200 rounded-3xl p-8">
+                                <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-100 text-orange-700 font-semibold mb-4">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    Challenges
+                </div>
+<h2 class="text-3xl font-black mb-4">Challenges and Fixes</h2>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <p class="font-bold text-slate-900">Challenge: unstable predictions in low-volume neighborhoods</p>
+                        <p class="text-slate-600 mt-2">Fix: introduced micro-market clustering and Bayesian smoothing.</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <p class="font-bold text-slate-900">Challenge: data lag from listing vendors</p>
+                        <p class="text-slate-600 mt-2">Fix: added freshness checks and fallback interpolation pipeline.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid lg:grid-cols-2 gap-6">
+                <div class="bg-white border border-slate-200 rounded-3xl p-8">
+                                        <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold mb-4">
+                        <i class="fas fa-code"></i>
+                        Stack
+                    </div>
+<h3 class="text-2xl font-black mb-4">Tech Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-800 text-sm font-semibold">Scikit-learn</span>
+                        <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold">GeoPandas</span>
+                        <span class="px-3 py-1 rounded-full bg-red-100 text-red-800 text-sm font-semibold">XGBoost</span>
+                        <span class="px-3 py-1 rounded-full bg-green-100 text-green-800 text-sm font-semibold">Streamlit</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-sm font-semibold">Docker</span>
+                    </div>
+                </div>
+                <div class="bg-white border border-slate-200 rounded-3xl p-8">
+                    <h3 class="text-2xl font-black mb-4">Results</h3>
+                    <ul class="space-y-3 text-slate-700">
+                        <li><i class="fas fa-arrow-right text-emerald-600 mr-2"></i>Mean absolute error reduced by 18%.</li>
+                        <li><i class="fas fa-arrow-right text-emerald-600 mr-2"></i>Regional estimate stability improved across 12 markets.</li>
+                        <li><i class="fas fa-arrow-right text-emerald-600 mr-2"></i>Analyst manual adjustment workload cut by 45%.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="bg-gradient-to-br from-slate-50 to-violet-50 border border-slate-200 rounded-3xl p-8">
+                                <div class="section-chip inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold mb-4">
+                    <i class="fas fa-diagram-project"></i>
+                    Related Work
+                </div>
+<h2 class="text-3xl font-black mb-6">Related Projects</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <a href="projects/fraud-detection-system.html" class="group block bg-slate-100 border border-slate-200 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=900&q=80" alt="Fraud detection dashboard on laptop" class="w-full h-44 object-cover transform-gpu transition-transform duration-700 group-hover:scale-110">
+                        <div class="p-6">
+                            <p class="text-sm text-slate-500 mb-3">Case Study</p>
+                            <h3 class="text-4xl font-black leading-tight text-slate-900 mb-4">Fraud Detection System</h3>
+                            <p class="text-slate-700 text-lg leading-relaxed mb-4">Scalable fraud prevention with real-time risk scoring.</p>
+                            <p class="text-blue-700 text-2xl font-semibold">Read Blog -></p>
+                        </div>
+                    </a>
+                    <a href="projects/customer-churn-prediction.html" class="group block bg-slate-100 border border-slate-200 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Customer analytics charts" class="w-full h-44 object-cover transform-gpu transition-transform duration-700 group-hover:scale-110">
+                        <div class="p-6">
+                            <p class="text-sm text-slate-500 mb-3">Case Study</p>
+                            <h3 class="text-4xl font-black leading-tight text-slate-900 mb-4">Customer Churn Prediction</h3>
+                            <p class="text-slate-700 text-lg leading-relaxed mb-4">Retention-focused ML pipeline with actionable risk labels.</p>
+                            <p class="text-blue-700 text-2xl font-semibold">Read Blog -></p>
+                        </div>
+                    </a>
+                    <a href="projects/healthcare-predictive-analytics.html" class="group block bg-slate-100 border border-slate-200 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80" alt="Healthcare analytics interface" class="w-full h-44 object-cover transform-gpu transition-transform duration-700 group-hover:scale-110">
+                        <div class="p-6">
+                            <p class="text-sm text-slate-500 mb-3">Case Study</p>
+                            <h3 class="text-4xl font-black leading-tight text-slate-900 mb-4">Healthcare Predictive Analytics</h3>
+                            <p class="text-slate-700 text-lg leading-relaxed mb-4">Clinical risk prediction and intervention support dashboard.</p>
+                            <p class="text-blue-700 text-2xl font-semibold">Read Blog -></p>
+                        </div>
+                    </a>
+                </div>
+                <a href="projects.html" class="inline-flex items-center gap-2 text-orange-700 font-bold hover:text-orange-900 mt-6">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Project Blogs
+                </a>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
