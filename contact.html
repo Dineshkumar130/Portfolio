@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+        (function () {
+            try {
+                var storedTheme = localStorage.getItem('portfolio-theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', initialTheme);
+            } catch (e) {}
+        })();
+    </script>
     <title>Contact - Dinesh Muppidi | Data Scientist</title>
-    <meta name="description" content="Get in touch with Dinesh Muppidi, Data Scientist specializing in ML, Data Engineering & Analytics. Let's discuss your project!">
+    <meta name="description" content="Get in touch with Dinesh Muppidi, Data Scientist specializing in machine learning, analytics, and data engineering.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -373,15 +383,6 @@
     <div id="footer-container"></div>
 
     <!-- Main JavaScript -->
-    <script src="js/main.js"></script>
-
-
-
-
-
-
-
-
-
-
-
+    <script src="js/main.js?v=20260417c"></script>
+    </body>
+</html>

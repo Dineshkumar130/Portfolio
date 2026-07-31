@@ -6,20 +6,65 @@
 (function () {
     'use strict';
 
+    const THEME_STORAGE_KEY = 'portfolio-theme';
+    const THEME_LIGHT = 'light';
+    const THEME_DARK = 'dark';
+    let themeSystemListenerBound = false;
+
+    applyTheme(getInitialTheme());
+
+    function resolveComponentUrl(url) {
+        const cleanPath = String(url || '').replace(/^\.?\//, '');
+        try {
+            return new URL(cleanPath, document.baseURI).toString();
+        } catch (error) {
+            return cleanPath;
+        }
+    }
+
+    function fetchComponentMarkup(url) {
+        const resolvedUrl = resolveComponentUrl(url);
+
+        // Force fresh header/footer after edits while still supporting a fallback retry.
+        return fetch(resolvedUrl, { cache: 'no-store' })
+            .catch(function () {
+                return fetch(resolvedUrl);
+            })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.text();
+            });
+    }
+
+    function isExpectedComponentMarkup(html, containerId) {
+        if (!html || typeof html !== 'string') {
+            return false;
+        }
+
+        if (containerId === 'header-container') {
+            return /<nav[\s>]/i.test(html);
+        }
+
+        if (containerId === 'footer-container') {
+            return /<footer[\s>]/i.test(html);
+        }
+
+        return true;
+    }
+
     function loadComponent(url, containerId) {
         const container = document.getElementById(containerId);
         if (!container) {
             return Promise.resolve();
         }
 
-        return fetch(url)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('HTTP ' + response.status);
-                }
-                return response.text();
-            })
+        return fetchComponentMarkup(url)
             .then((html) => {
+                if (!isExpectedComponentMarkup(html, containerId)) {
+                    throw new Error('Unexpected component response for ' + containerId);
+                }
                 container.innerHTML = html;
             })
             .catch((error) => {
@@ -42,6 +87,7 @@
     });
 
     function initComponents() {
+        initThemeToggle();
         initNavigation();
         initSmoothScroll();
         initScrollEffects();
@@ -52,6 +98,118 @@
         initProjectsCarousel();
         initAnalyticsCounters();
         console.log('All components initialized');
+    }
+
+    function getStoredTheme() {
+        try {
+            const stored = localStorage.getItem(THEME_STORAGE_KEY);
+            if (stored === THEME_LIGHT || stored === THEME_DARK) {
+                return stored;
+            }
+        } catch (error) {
+            console.warn('Theme storage unavailable', error);
+        }
+        return null;
+    }
+
+    function setStoredTheme(theme) {
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+        } catch (error) {
+            console.warn('Theme storage unavailable', error);
+        }
+    }
+
+    function getSystemTheme() {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return THEME_DARK;
+        }
+        return THEME_LIGHT;
+    }
+
+    function getInitialTheme() {
+        return getStoredTheme() || getSystemTheme();
+    }
+
+    function applyTheme(theme) {
+        const nextTheme = theme === THEME_DARK ? THEME_DARK : THEME_LIGHT;
+        document.documentElement.setAttribute('data-theme', nextTheme);
+    }
+
+    function isDarkTheme() {
+        return document.documentElement.getAttribute('data-theme') === THEME_DARK;
+    }
+
+    function updateThemeToggleUI() {
+        const isDark = isDarkTheme();
+        const buttons = document.querySelectorAll('[data-theme-toggle]');
+        buttons.forEach(function (button) {
+            const icon = button.querySelector('i');
+            const label = button.querySelector('[data-theme-label]');
+            const ariaLabel = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+
+            button.setAttribute('aria-label', ariaLabel);
+            button.setAttribute('title', ariaLabel);
+
+            if (icon) {
+                icon.classList.toggle('fa-moon', !isDark);
+                icon.classList.toggle('fa-sun', isDark);
+            }
+
+            if (label) {
+                label.textContent = isDark ? 'Light mode' : 'Dark mode';
+            }
+        });
+    }
+
+    function toggleTheme() {
+        const nextTheme = isDarkTheme() ? THEME_LIGHT : THEME_DARK;
+        applyTheme(nextTheme);
+        setStoredTheme(nextTheme);
+        updateThemeToggleUI();
+    }
+
+    function bindSystemThemeListener() {
+        if (themeSystemListenerBound || !window.matchMedia) {
+            return;
+        }
+
+        const query = window.matchMedia('(prefers-color-scheme: dark)');
+        const onChange = function (event) {
+            if (getStoredTheme()) {
+                return;
+            }
+            applyTheme(event.matches ? THEME_DARK : THEME_LIGHT);
+            updateThemeToggleUI();
+        };
+
+        if (typeof query.addEventListener === 'function') {
+            query.addEventListener('change', onChange);
+        } else if (typeof query.addListener === 'function') {
+            query.addListener(onChange);
+        }
+
+        themeSystemListenerBound = true;
+    }
+
+    function initThemeToggle() {
+        const buttons = document.querySelectorAll('[data-theme-toggle]');
+        if (!buttons.length) {
+            return;
+        }
+
+        buttons.forEach(function (button) {
+            if (button.dataset.themeBound === 'true') {
+                return;
+            }
+            button.dataset.themeBound = 'true';
+            button.addEventListener('click', function () {
+                toggleTheme();
+            });
+        });
+
+        updateThemeToggleUI();
+        bindSystemThemeListener();
     }
 
     function initNavigation() {

@@ -1,8 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+        (function () {
+            try {
+                var storedTheme = localStorage.getItem('portfolio-theme');
+                var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', initialTheme);
+            } catch (e) {}
+        })();
+    </script>
     <title>Data Analytics Services - Dinesh Muppidi | Data Scientist</title>
     <meta name="description" content="Advanced data analytics, BI dashboards, predictive insights, Tableau/Power BI, business intelligence solutions.">
     <script src="https://cdn.tailwindcss.com"></script>
